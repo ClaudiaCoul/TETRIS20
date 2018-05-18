@@ -1,3 +1,5 @@
+package annette.godtland.gallingbricks;
+
 import javax.swing.JPanel;
 import java.awt.*;
 
