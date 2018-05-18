@@ -1,4 +1,4 @@
-package annette.godtland.gallingbricks;
+package annette.godtland.fallingbricks;
 
 import javax.swing.JPanel;
 import java.awt.*;
