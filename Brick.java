@@ -1,4 +1,4 @@
-package annette.godtland.gallingbricks;
+package annette.godtland.fallingbricks;
 
 public class Brick {
   public static final TILE_SIZE = 30;
