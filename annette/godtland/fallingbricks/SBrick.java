@@ -19,6 +19,20 @@ public class SBrick extends Brick {
     }
   }
   
+  public void rotateLeft() {
+    state -= 1;
+    if (state < 0) {
+      state = TILES.length - 1;
+    }
+  }
+  
+  public void rotateRight() {
+    state += 1;
+    if (sate >= TILES.length) {
+      state = 0;
+    }
+  }
+  
   public void draw(Graphics g) {
     int rows = TILES.length;
     int cols = TILES[0].length;
