@@ -41,6 +41,15 @@ public class BricksPanel extends JPanel {
     int col = brick.getColumn();
     int brickRows = brick.getNumberofRows();
     int brickColumns = brick.getNumberOfColumns();
+    
+    //check if beyond left or right edge of panel
+    if(col < 0 || brickCols + col > COLS){
+      legal = false;
+    }
+    //checks if in top or bottom edge of panel
+    else if(row < 0 || row + brickRows > ROWS){
+      legal = false;
+    }
     return legal;
   }
 }
