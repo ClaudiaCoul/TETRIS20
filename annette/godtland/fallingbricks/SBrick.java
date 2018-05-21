@@ -47,4 +47,12 @@ public class SBrick extends Brick {
       }//end col forloop
     }//end row forloop
   }//end draw method
+  
+  public boolean hasTileAt(int row, int col){
+    return TILES[row][col];
+  }
+  
+  public BufferedImage getTileImage(){
+    return image;
+  }
 }
