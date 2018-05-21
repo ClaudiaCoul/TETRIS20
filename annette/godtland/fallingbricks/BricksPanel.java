@@ -1,3 +1,4 @@
+//Austin
 package annette.godtland.fallingbricks;
 
 import javax.swing.JPanel;
@@ -10,6 +11,11 @@ public class BricksPanel extends JPanel {
   private static final int COLS = 10;
   private static final int WIDTH = COLS * TILE_SIZE;
   private static final int HEIGHT = ROWS * TILE_SIZE;
+  
+  public BricksPanel(){
+    initGUI();
+    start();
+  }
   
   public Dimension getPreferredSize(){
     Dimension size = new Dimension(WIDTH, HEIGHT);
@@ -25,5 +31,7 @@ public class BricksPanel extends JPanel {
     
     // falling bricks
   }
-
+  private void initGUI(){
+   
+   }
 }
