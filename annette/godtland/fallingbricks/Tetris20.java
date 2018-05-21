@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 public class Tetris20 extends JFrame {
    private static final long serialVersionUID = 1L;
+   ScorePanel scorepanel = new ScorePanel(0, Color.CYAN);
    public static void main(String[] args){
       try{
          String className = UIManager.getCrossPlatformLookAndFeelClassName();
@@ -29,9 +30,13 @@ public class Tetris20 extends JFrame {
   
   public void initGUI(){
      JLabel titleLabel = new JLabel("Tetris20");
-     add(PAGE_START);
+     add(titleLabel, BorderLabel.PAGE_START);
      //main panel
-     
+     JPanel mainPanel = new Jpanel();
+     mainPanel.setBackground(Color.CYAN);
+     mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+     mainPanel.add(BorderLayout.CENTER);
+         
      //score panel
      
      //bricks panel
