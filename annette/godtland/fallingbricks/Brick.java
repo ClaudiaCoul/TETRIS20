@@ -18,4 +18,12 @@ public class Brick {
   public void moveRight(){
     x += TILE_SIZE;
   }
+  
+  public int getColumn(){
+    int col = x/TILE_SIZE;
+    return col;
+  }
+  
+  public int getRow(){
+    int row = (y + TILE_SIZE - 1) / TILE_SIZE;
 }
