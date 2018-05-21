@@ -11,10 +11,21 @@ public class BricksPanel extends JPanel {
   private static final int COLS = 10;
   private static final int WIDTH = COLS * TILE_SIZE;
   private static final int HEIGHT = ROWS * TILE_SIZE;
+  private static final SBrick brick;
   
   public BricksPanel(){
     initGUI();
     start();
+  }
+  
+  public void start() {
+    pickABrick();
+  }
+  
+  private void pickABrick() {
+    int row = 0;
+    int col = (COLS / 2);
+    brick = new SBrick(row, col);
   }
   
   public Dimension getPreferredSize(){
@@ -30,6 +41,9 @@ public class BricksPanel extends JPanel {
     // fallen bricks
     
     // falling bricks
+    if (brick != null) {
+      brick.draw(g); //might not work!
+    }
   }
   private void initGUI(){
    
