@@ -62,14 +62,24 @@ public class BricksPanel extends JPanel {
 	});
   }
   
-  private void moveLeft(){
-	  brick.moveLeft();
-	  repaint();
+  private void moveLeft(){  
+  	brick.moveLeft();
+	if(isLegal = true){
+		repaint();
+	}
+	  else{
+		  brick.moveRight();
+	  }
   }
 
   private void moveRight(){
 	  brick.moveRight();
-	  repaint();
+	  if(isLegal = true){
+		repaint();
+	}
+	  else{
+		  brick.moveLeft();
+	  }
   }
   
   private boolean isLegal(){
