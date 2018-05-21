@@ -47,24 +47,30 @@ public class BricksPanel extends JPanel {
   }
   private void initGUI(){
     setFocusable();
-	  addKeyListener(new KeyAdapter(){
-		  public void KeyPressed(KeyEvent e){
-			  int code = e.getKeyCode();
-			    switch(code) {
-				    case KeyEvent.VK_LEFT:
-					    moveLeft();
-					    break;
-				    case KeyEvent.VK_RIGHT:
-					    moveRight();
-					    break;
-			}
-		}
-	});
+    addKeyListener(new KeyAdapter(){
+	public void KeyPressed(KeyEvent e){
+	   int code = e.getKeyCode();
+	   switch(code) {
+              case KeyEvent.VK_LEFT:
+	      	moveLeft();
+              	break;
+	      case KeyEvent.VK_RIGHT:
+	      	moveRight();
+	      	break;
+	      case KeyEvent.VK_Z:
+	      	rotateLeft();
+	        break;
+	      case KeyEvent.VK_X:
+	        rotateRight();
+	      	break;
+	   }
+	}
+     });
   }
   
   private void moveLeft(){  
   	brick.moveLeft();
-	if(isLegal = true){
+	if(isLegal()){
 		repaint();
 	}
 	  else{
@@ -74,7 +80,7 @@ public class BricksPanel extends JPanel {
 
   private void moveRight(){
 	  brick.moveRight();
-	  if(isLegal = true){
+	  if(isLegal()){
 		repaint();
 	}
 	  else{
@@ -82,6 +88,16 @@ public class BricksPanel extends JPanel {
 	  }
   }
   
+  private void rotateLeft() {
+     brick.rotateLeft();
+     if (isLegal()) {
+        repaint();
+     }
+     else {
+       brick.rotateRight();
+     }
+  }
+	
   private boolean isLegal(){
     boolean legal = true;
     int row = brick.getRow();
