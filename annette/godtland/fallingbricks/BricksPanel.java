@@ -34,4 +34,10 @@ public class BricksPanel extends JPanel {
   private void initGUI(){
    
    }
+  
+  private boolean isLegal(){
+    boolean legal = true;
+    int row = brick.getRow();
+    int col = brick.getColumn();
+  }
 }
