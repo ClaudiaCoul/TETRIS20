@@ -46,8 +46,31 @@ public class BricksPanel extends JPanel {
     }
   }
   private void initGUI(){
-   
-   }
+    setFocusable();
+	  addKeyListener(new KeyAdapter(){
+		  public void KeyPressed(KeyEvent e){
+			  int code = e.getKeyCode();
+			    switch(code) {
+				    case KeyEvent.VK_LEFT:
+					    moveLeft();
+					    break;
+				    case KeyEvent.VK_RIGHT:
+					    moveRight();
+					    break;
+			}
+		}
+	});
+  }
+  
+  private void moveLeft(){
+	  brick.moveLeft();
+	  repaint();
+  }
+
+  private void moveRight(){
+	  brick.moveRight();
+	  repaint();
+  }
   
   private boolean isLegal(){
     boolean legal = true;
