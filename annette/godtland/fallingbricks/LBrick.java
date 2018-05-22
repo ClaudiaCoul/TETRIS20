@@ -1,24 +1,24 @@
 package annette.godtland.fallingbricks;
 
-public class TBrick extends Brick{
+public class LBrick extends Brick{
   
-  private static final string BRICK_FILE "/whiteBrick.jpg";
+  private static final string BRICK_FILE "/greenBrick.jpg";
   private static final boolean[][][] TILES = {{{true, true, true},
-                                               {false, true, false}},
+                                               {true, false, false}},
                                               
-                                              {{false, true},
-                                               {true, true},
+                                              {{true, true},
+                                               {false, true},
                                                {false, true}},
                                               
-                                              {{false, true, false},
+                                              {{false, false, true},
                                                {true, true, true}},
                                               
                                               {{true, false},
-                                               {true, true},
-                                               {true, false}}};
+                                               {true, false},
+                                               {true, true}}};
   private static BufferedImage image;
 
-  public TBrick(int row, int col) {
+  public LBrick(int row, int col) {
     super(row, col);
     if (image == null) {
       image = FileIO.readImageFile(this, BRICK_FILE);
