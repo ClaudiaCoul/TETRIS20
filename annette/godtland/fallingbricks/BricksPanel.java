@@ -52,6 +52,7 @@ public class BricksPanel extends JPanel {
 		     break;
 	    case 7 : brick = new ZBrick(row, col);
 		     break;
+    }
 	  
 	  
 	  
