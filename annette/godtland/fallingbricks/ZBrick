@@ -1,0 +1,2 @@
+public class ZBrick extends Brick{
+  private static final String BRICK_FILE = 
