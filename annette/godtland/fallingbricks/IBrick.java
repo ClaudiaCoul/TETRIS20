@@ -20,7 +20,7 @@ public class IBrick extends Brick {
   public IBrick(int row, int col) {
     super(row, col);
     if (image == null) {
-      image = FileIO.readImageFile(this);
+      image = FileIO.readImageFile(this, BRICK_FILE);
     }
   }
   
