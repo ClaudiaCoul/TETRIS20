@@ -36,6 +36,15 @@ public abstract class Brick {
     return TILES[0].length();
   }
   
+  public void drop1Row() {
+    y += TILE_SIZE;
+  }
+  
+  public void rise1Row() {
+    y -= TILE_SIZE;
+  }
+  
+  //abstract methods
   public abstract void draw(Graphics g);
   
   public abstract int getNumberOfRows();
