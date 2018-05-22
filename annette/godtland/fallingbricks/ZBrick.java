@@ -13,7 +13,7 @@ public class ZBrick extends Brick {
   public ZBrick(int row, int col) {
     super(row, col);
     if (image == null) {
-      image = FileIO.readImageFile(this);
+      image = FileIO.readImageFile(this, BRICK_FILE);
     }
   }
   
