@@ -7,7 +7,7 @@ public abstract class Brick {
   protected int y;
   
   public Brick(int row, int col){
-    x = col * TILE_SIZE;
+    x = TILE_SIZE * (col - (getNumberOfColumns() / 2));
     y = row * TILE_SIZE;
   }
   
