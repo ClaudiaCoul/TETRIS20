@@ -75,7 +75,7 @@ public class BricksPanel extends JPanel {
       brick.draw(g); //might not work!
     }
   }
-  private void initGUI(){
+   private void initGUI(){
     setFocusable();
     addKeyListener(new KeyAdapter(){
 	public void KeyPressed(KeyEvent e){
@@ -93,10 +93,14 @@ public class BricksPanel extends JPanel {
 	      case KeyEvent.VK_X:
 	        rotateRight();
 	      	break;
+         case KeyEvent.VK_SPACE:
+           drop();
+           break;
+           
 	   }
 	}
      });
-  }
+}
   
   private void moveLeft(){  
   	brick.moveLeft();
@@ -137,7 +141,18 @@ public class BricksPanel extends JPanel {
        brick.rotateLeft();
      }
   }
-	
+  private void drop() {
+   //drop the brick to its lowest position
+   boolean legal = true;
+   while (legal) {
+      brick.drop1Row();
+      if (!isLegal()) {
+        legal = false;
+	brick.rise1Row();
+      }
+     }
+     repaint();
+  }
   private boolean isLegal(){
     boolean legal = true;
     int row = brick.getRow();
