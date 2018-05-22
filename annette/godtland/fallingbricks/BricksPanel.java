@@ -9,8 +9,8 @@ public class BricksPanel extends JPanel {
   private static final long serialVersionUID = 1L;
   private static final int ROWS = 15;
   private static final int COLS = 10;
-  private static final int WIDTH = COLS * TILE_SIZE;
-  private static final int HEIGHT = ROWS * TILE_SIZE;
+  private static final int WIDTH = COLS * Brick.TILE_SIZE;
+  private static final int HEIGHT = ROWS * Brick.TILE_SIZE;
   private static final Brick brick;
   
   public BricksPanel(){
