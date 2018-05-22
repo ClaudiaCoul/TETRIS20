@@ -98,6 +98,16 @@ public class BricksPanel extends JPanel {
      }
   }
 	
+  private void rotateRight() {
+     brick.rotateRight();
+     if (isLegal()) {
+	repaint();
+     }
+     else {
+       brick.rotateLeft();
+     }
+  }
+	
   private boolean isLegal(){
     boolean legal = true;
     int row = brick.getRow();
