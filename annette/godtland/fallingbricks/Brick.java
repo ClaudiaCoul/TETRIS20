@@ -1,6 +1,6 @@
 package annette.godtland.fallingbricks;
 
-public class Brick {
+public abstract class Brick {
   public static final int TILE_SIZE = 30;
   
   protected int x;
@@ -35,5 +35,19 @@ public class Brick {
   public int getNumberOfColumns(){
     return TILES[0].length();
   }
+  
+  public abstract void draw(Graphics g);
+  
+  public abstract int getNumberOfRows();
+  
+  public abstract int getNumberOfColumns();
+  
+  public abstract void rotateLeft();
+  
+  public abstract void rotateRight();
+  
+  public abstract boolean hasTileAt(int row, int col);
+  
+  public abstract BufferedImage getTileImage();
 }
   
