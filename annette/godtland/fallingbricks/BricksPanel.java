@@ -11,7 +11,18 @@ public class BricksPanel extends JPanel {
   private static final int COLS = 10;
   private static final int WIDTH = COLS * Brick.TILE_SIZE;
   private static final int HEIGHT = ROWS * Brick.TILE_SIZE;
+  	private static final int SHAPE_I = 0;
+  	private static final int SHAPE_J = 1;
+	private static final int SHAPE_L = 2;
+	private static final int SHAPE_O = 3;
+	private static final int SHAPE_S = 4;
+	private static final int SHAPE_T = 5;
+	private static final int SHAPE_Z = 6;
+	private static final int SHAPE_NUMBER_OF_SHAPES = 7;
   private static final Brick brick;
+  Random rand = new Random();
+	
+	
   
   public BricksPanel(){
     initGUI();
