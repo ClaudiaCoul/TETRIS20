@@ -5,19 +5,19 @@ package annette.godtland.fallingbricks;
 import java.awt.image.BufferedImage;
 
 
-public class SBrick extends Brick {
+public class IBrick extends Brick {
   
-  private static final string BRICK_FILE "/redBrick.jpg";
-  private static final boolean[][][]TILES = {{{false, true, true},
-                                             {true, true, false}},
+  private static final string BRICK_FILE "/blueBrick.jpg";
+  private static final boolean[][][]TILES = {{{true, true, true},
+                                             {false, false, false}},
                                              
-                                             {{false, true},
-                                              {true, true},
+                                             {{true, false},
+                                              {true, false},
                                               {true, false}}};
   private static BufferedImage image;
   int state = 0;
   
-  public SBrick(int row, int col) {
+  public IBrick(int row, int col) {
     super(row, col);
     if (image == null) {
       image = FileIO.readImageFile(this);
@@ -25,16 +25,28 @@ public class SBrick extends Brick {
   }
   
   public void rotateLeft() {
-    state -= 1;
+    state--;
     if (state < 0) {
       state = TILES.length - 1;
+    }
+    if (state == 1) {
+      brick.moveRight();
+    }
+    else {
+      brick.moveLeft();
     }
   }
   
   public void rotateRight() {
-    state += 1;
-    if (sate >= TILES.length) {
+    state++;
+    if (state >= TILES.length) {
       state = 0;
+    }
+    if (state == 1) {
+      brick.moveRight();
+    }
+    else {
+      brick.moveLeft();
     }
   }
   
