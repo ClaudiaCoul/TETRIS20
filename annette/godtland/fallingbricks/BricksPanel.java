@@ -36,7 +36,25 @@ public class BricksPanel extends JPanel {
   private void pickABrick() {
     int row = 0;
     int col = (COLS / 2);
-    brick = new ZBrick(row, col);
+    int pick = rand.nextInt(NUMBER_OF_SHAPES);
+    switch(pick){
+	    case 1 : brick = new IBrick(row, col);
+		     break;
+	    case 2 : brick = new JBrick(row, col);
+		     break;
+	    case 3 : brick = new LBrick(row, col);
+		     break;
+ 	    case 4 : brick = new OBrick(row, col);
+		     break;
+	    case 5 : brick = new SBrick(row, col);
+		     break;
+	    case 6 : brick = new TBrick(row, col);
+		     break;
+	    case 7 : brick = new ZBrick(row, col);
+		     break;
+	  
+	  
+	  
   }
   
   public Dimension getPreferredSize(){
