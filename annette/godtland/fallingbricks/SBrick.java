@@ -68,4 +68,18 @@ public class SBrick extends Brick {
   public int getNumberOfColumns(){
     return TILES[state][0].length();
   }
+  public void draw(Graphics g){
+    int rows = TILES[state].length;
+    int cols = TILES[state][0].length;
+    for(int row = 0; row < rows; row++){
+      for(int col = 0; col < cols; col++){
+        if (TILES[state][row][col]){
+           int tileX = x + TILE_SIZE * col;
+           int tileY = y + TILE_SIZE * row;
+           g.drawImage(image, tileX, tileY, null);
+        }
+      }
+    }
+  }
+          
 }
