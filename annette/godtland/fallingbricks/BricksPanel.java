@@ -22,7 +22,7 @@ public class BricksPanel extends JPanel {
   private static final String SNAP_SOUND = "/snap.wav";
   private static final Brick brick;
   Random rand = new Random();
-	
+  BufferedImage[][] board;
 	
   
   public BricksPanel(){
@@ -31,6 +31,7 @@ public class BricksPanel extends JPanel {
   }
   
   public void start() {
+    board = new BufferedImage[ROWS][COLS];
     pickABrick();
   }
   
@@ -171,7 +172,7 @@ public class BricksPanel extends JPanel {
 	brick.rise1Row();
       }
      }
-     pickABrick();
+     insertBrick();
      repaint();
   }
 	//check if required space is empty
@@ -202,4 +203,11 @@ public class BricksPanel extends JPanel {
   
     return legal;
   }
+  private void insertBrick(){
+   int brickRow = brick.getRow();
+   int brickCol = brick.getColumn();
+   int brickRows = brick.getNumberOfRows();
+   int brickCols = brick.getNumberofColumns();
+   for(int r = 0; r < brickRows; r++){
+	  
 }
