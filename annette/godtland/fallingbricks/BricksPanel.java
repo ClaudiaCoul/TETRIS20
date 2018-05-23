@@ -154,6 +154,7 @@ public class BricksPanel extends JPanel {
      pickABrick();
      repaint();
   }
+	//check if required space is empty
   private boolean isLegal(){
     boolean legal = true;
     int row = brick.getRow();
@@ -169,6 +170,16 @@ public class BricksPanel extends JPanel {
     else if(row < 0 || row + brickRows > ROWS){
       legal = false;
     }
+	else{
+		for(int r = 0; r < brickRows; r++){
+			for(int c = 0; c < brickCols; c++){
+				if(brick.hasTileAt(r, c) && board[row + r][col + c] != null){
+					legal = false;
+				}
+			}
+		}
+	}
+  
     return legal;
   }
 }
