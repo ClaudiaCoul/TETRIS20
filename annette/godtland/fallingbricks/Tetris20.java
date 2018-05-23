@@ -41,4 +41,8 @@ public class Tetris20 extends JFrame {
      
      //bricks panel
   }
+   
+   public void addToScore(int points){
+      scorePanel.addToScore(points);
+   }
 }
