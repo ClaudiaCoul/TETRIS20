@@ -64,6 +64,25 @@ public class BricksPanel extends JPanel {
     return size;
   }
   
+   private void removeFilledRows() {
+    for (int row = ROWS; row >= 0; row--) { 
+      boolean filled = true;
+      while (filled) {
+         for (int col = 0; col <= COLS; col++) {
+            if(board[row][col] = null) {
+                filled = false;
+            }
+         }
+         if (filled) {
+            for (int r = row; r <= ROWS; r++) {
+               for (int c = 0; c <= COLS; c++) {
+                  board[r][c] = board[r-1][c];
+               }
+            }
+         }
+     }
+  }
+	   
   public void paintComponent(Graphics g) {
     //Background
     g.setColor(Color.BLACK);
