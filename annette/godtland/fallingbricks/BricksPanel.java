@@ -151,6 +151,7 @@ public class BricksPanel extends JPanel {
 	brick.rise1Row();
       }
      }
+     pickABrick();
      repaint();
   }
   private boolean isLegal(){
