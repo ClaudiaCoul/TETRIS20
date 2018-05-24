@@ -57,7 +57,12 @@ public class BricksPanel extends JPanel {
 	    case 7 : brick = new ZBrick(row, col);
 		     break;
     }
-	  
+	if(!isLegal()){
+		brick = null;
+		timer.stop();
+		String message = "Wow U suck... Try harder";
+		//to be continued
+	}
 	  
 	  
   }
