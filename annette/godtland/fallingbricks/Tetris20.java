@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 public class Tetris20 extends JFrame {
    private static final long serialVersionUID = 1L;
-   ScorePanel scorepanel = new ScorePanel(0, Color.CYAN);
+   private ScorePanel scorepanel = new ScorePanel(0, Color.CYAN);
+   private BricksPanel bricksPanel = new BricksPanel();
+   
    public static void main(String[] args){
       try{
          String className = UIManager.getCrossPlatformLookAndFeelClassName();
