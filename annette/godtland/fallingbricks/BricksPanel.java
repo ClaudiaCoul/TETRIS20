@@ -209,5 +209,14 @@ public class BricksPanel extends JPanel {
    int brickRows = brick.getNumberOfRows();
    int brickCols = brick.getNumberofColumns();
    for(int r = 0; r < brickRows; r++){
-	  
+      for(int c = 0; c < brickCols; c++){
+	 if(brick.hasTileAt(r, c){
+	    int row += r + brickRow;
+	    int col += c + brickCol;
+	    board[row][col] = brick.getTileImage();
+	  } 
+       }
+    } 
+   pickABrick();
+ }
 }
