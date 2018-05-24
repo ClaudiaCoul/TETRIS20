@@ -23,11 +23,13 @@ public class BricksPanel extends JPanel {
   private static final Brick brick;
   Random rand = new Random();
   BufferedImage[][] board;
+  Tetris20 tetris20;
 	
   
-  public BricksPanel(){
-    initGUI();
-    start();
+  public BricksPanel(Tetris20 tetris20){
+  	this.tetris20 = tetris20;
+    	initGUI();
+        start();
   }
   
   public void start() {
@@ -66,24 +68,41 @@ public class BricksPanel extends JPanel {
   }
   
    private void removeFilledRows() {
-    for (int row = ROWS; row >= 0; row--) { 
-      boolean filled = true;
-      while (filled) {
-         for (int col = 0; col <= COLS; col++) {
-            if(board[row][col] = null) {
-                filled = false;
-            }
-         }
-         if (filled) {
-            for (int r = row; r <= ROWS; r++) {
-               for (int c = 0; c <= COLS; c++) {
-                  board[r][c] = board[r-1][c];
-               }
-            }
-            row++;
-         }
-     }
+	 int count = 0
+   	 for (int row = ROWS; row >= 0; row--) { 
+      		boolean filled = true;
+      		while (filled) {
+         		for (int col = 0; col <= COLS; col++) {
+            			if(board[row][col] = null) {
+                			filled = false;
+            			}
+        		 }
+         		 if (filled) {
+            		 	for (int r = row; r <= ROWS; r++) {
+               		 		for (int c = 0; c <= COLS; c++) {
+                  				board[r][c] = board[r-1][c];
+               				}
+            		 	 }
+            		 	 row++;
+				 count++;
+         		}
+     		}
+ 	 }
+	 calculateScore(count);
+   }
+  private void calculateScore(int count){
+	  switch(count){
+		  case 1: tetris20.addToScore(1);
+			  break;
+		  case 2: tetris20.addToScore(2);
+			  break;
+		  case 3: tetris20.addToScore(3);
+			  break;
+		  case 4: tetris20.addToScore(4);
+			  break;
+	  }
   }
+	
 	   
   public void paintComponent(Graphics g) {
     //Background
