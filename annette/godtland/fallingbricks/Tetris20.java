@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 public class Tetris20 extends JFrame {
    private static final long serialVersionUID = 1L;
-   private ScorePanel scorepanel = new ScorePanel(0, Color.CYAN);
+   private ScorePanel scorePanel = new ScorePanel(0, Color.CYAN);
    private BricksPanel bricksPanel = new BricksPanel();
    
    public static void main(String[] args){
@@ -47,4 +47,10 @@ public class Tetris20 extends JFrame {
    public void addToScore(int points){
       scorePanel.addToScore(points);
    }
+   
+   public void restart(){
+      scorePanel.reset();
+      bricksPanel.start();
+   }
+      
 }
