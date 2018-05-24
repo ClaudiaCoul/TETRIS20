@@ -80,6 +80,7 @@ public class BricksPanel extends JPanel {
                   board[r][c] = board[r-1][c];
                }
             }
+            row++;
          }
      }
   }
