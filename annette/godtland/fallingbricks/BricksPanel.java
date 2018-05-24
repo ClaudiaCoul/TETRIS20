@@ -217,6 +217,7 @@ public class BricksPanel extends JPanel {
 	  } 
        }
     } 
+   FileIO.playClip(SNAP_SOUND);
    pickABrick();
  }
 }
