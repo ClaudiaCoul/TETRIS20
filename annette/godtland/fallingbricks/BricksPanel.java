@@ -1,4 +1,3 @@
-//Austin
 package annette.godtland.fallingbricks;
 
 import javax.swing.JPanel;
@@ -24,7 +23,7 @@ public class BricksPanel extends JPanel {
   Random rand = new Random();
   BufferedImage[][] board;
   Tetris20 tetris20;
-	
+   Timer timer;
   
   public BricksPanel(Tetris20 tetris20){
   	this.tetris20 = tetris20;
@@ -35,36 +34,40 @@ public class BricksPanel extends JPanel {
   public void start() {
     board = new BufferedImage[ROWS][COLS];
     pickABrick();
+	  timer.start();
   }
   
   private void pickABrick() {
     int row = 0;
     int col = (COLS / 2);
     int pick = rand.nextInt(NUMBER_OF_SHAPES);
-    switch(pick){
-	    case 1 : brick = new IBrick(row, col);
-		     break;
-	    case 2 : brick = new JBrick(row, col);
-		     break;
-	    case 3 : brick = new LBrick(row, col);
-		     break;
- 	    case 4 : brick = new OBrick(row, col);
-		     break;
-	    case 5 : brick = new SBrick(row, col);
-		     break;
-	    case 6 : brick = new TBrick(row, col);
-		     break;
-	    case 7 : brick = new ZBrick(row, col);
-		     break;
-    }
-	if(!isLegal()){
+	    switch(pick){
+		    case 1 : brick = new IBrick(row, col);
+			     break;
+		    case 2 : brick = new JBrick(row, col);
+			     break;
+		    case 3 : brick = new LBrick(row, col);
+			     break;
+		    case 4 : brick = new OBrick(row, col);
+			     break;
+		    case 5 : brick = new SBrick(row, col);
+			     break;
+		    case 6 : brick = new TBrick(row, col);
+			     break;
+		    case 7 : brick = new ZBrick(row, col);
+			     break;
+	    }
+	    if(!isLegal()){
 		brick = null;
 		timer.stop();
 		String message = "Wow U suck... Try harder";
-		//to be continued
-	}
-	  
-	  
+		int option = JOptionPane.showConfirmDialog(this, message, "Play Again?", JOptionPane.YES_NO_OPTION);
+		if(option == JOptionPane.YES_OPTION){
+			fallingBricks.restart();
+		}else{
+			System.exit(0);
+		}
+	    }
   }
   
   public Dimension getPreferredSize(){
@@ -127,25 +130,29 @@ public class BricksPanel extends JPanel {
 	public void KeyPressed(KeyEvent e){
 	   int code = e.getKeyCode();
 	   switch(code) {
-              case KeyEvent.VK_LEFT:
-	      	moveLeft();
-              	break;
-	      case KeyEvent.VK_RIGHT:
-	      	moveRight();
-	      	break;
-	      case KeyEvent.VK_Z:
-	      	rotateLeft();
-	        break;
-	      case KeyEvent.VK_X:
-	        rotateRight();
-	      	break;
-         case KeyEvent.VK_SPACE:
-           drop();
-           break;
-           
+           	case KeyEvent.VK_LEFT:
+	      		moveLeft();
+              		break;
+	      	case KeyEvent.VK_RIGHT:
+	      		moveRight();
+	      		break;
+	      	case KeyEvent.VK_Z:
+	      		rotateLeft();
+	        	break;
+	        case KeyEvent.VK_X:
+	        	rotateRight();
+	      		break;
+         	case KeyEvent.VK_SPACE:
+           		drop();
+           		break;     
 	   }
 	}
-     });
+     }); //weird shit just leave it alone
+	   timer = new Timer(40, new ActionListener() {
+		   public void actionPerformed(ActionEvent e){
+			   timedAction();
+		   }
+	   }); //more wild code... dont mess w it
 }
   
   private void moveLeft(){  
@@ -229,20 +236,37 @@ public class BricksPanel extends JPanel {
     return legal;
   }
   private void insertBrick(){
-   int brickRow = brick.getRow();
-   int brickCol = brick.getColumn();
-   int brickRows = brick.getNumberOfRows();
-   int brickCols = brick.getNumberofColumns();
-   for(int r = 0; r < brickRows; r++){
-      for(int c = 0; c < brickCols; c++){
-	 if(brick.hasTileAt(r, c){
-	    int row += r + brickRow;
-	    int col += c + brickCol;
-	    board[row][col] = brick.getTileImage();
-	  } 
-       }
-    } 
-   FileIO.playClip(SNAP_SOUND);
-   pickABrick();
+	   int brickRow = brick.getRow();
+	   int brickCol = brick.getColumn();
+	   int brickRows = brick.getNumberOfRows();
+	   int brickCols = brick.getNumberofColumns();
+	   for(int r = 0; r < brickRows; r++){
+	      for(int c = 0; c < brickCols; c++){
+		 if(brick.hasTileAt(r, c){
+		    int row += r + brickRow;
+		    int col += c + brickCol;
+		    board[row][col] = brick.getTileImage();
+		  } 
+	       }
+	    } 
+	   FileIO.playClip(SNAP_SOUND);
+	   pickABrick();
  }
+ 
+ private void timedAction(){
+	 brick.fall(2);
+	 
+	 //if cant fall further, set into place!
+	 if(!isLegal){
+		 brick.fall(-2);
+		 drop();
+	 }
+	 else{
+		 repaint();
+	 }
+ }
+		 
+	
+	 
+	 
 }
