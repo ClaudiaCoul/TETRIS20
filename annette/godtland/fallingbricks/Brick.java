@@ -44,6 +44,10 @@ public abstract class Brick {
     y -= TILE_SIZE;
   }
   
+  public void fall(int changeY){
+      y += changeY;
+  }
+  
   //abstract methods
   public abstract void draw(Graphics g);
   
