@@ -1,11 +1,12 @@
 
+
 import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.*;
 public class Tetris20 extends JFrame {
    private static final long serialVersionUID = 1L;
    private ScorePanel scorePanel = new ScorePanel(0, Color.CYAN);
-   private BricksPanel bricksPanel = new BricksPanel(null);
+   private BricksPanel bricksPanel = new BricksPanel(this);
    
    public static void main(String[] args){
       try{
@@ -13,11 +14,11 @@ public class Tetris20 extends JFrame {
          UIManager.setLookAndFeel(className);
       }catch(Exception e){}
       
-      SwingUtilities.invokeLater(Runnable doRun){
+      SwingUtilities.invokeLater(new Runnable(){
          public void run(){
-            new Tetris20;
+            new Tetris20();
          }
-      }
+      });
      
    }
    public Tetris20(){
@@ -42,6 +43,7 @@ public class Tetris20 extends JFrame {
      //score panel
      
      //bricks panel
+     mainPanel.add(bricksPanel);
   }
    
    public void addToScore(int points){
