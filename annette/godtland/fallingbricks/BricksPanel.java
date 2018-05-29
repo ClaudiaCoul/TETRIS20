@@ -1,8 +1,17 @@
 package annette.godtland.fallingbricks;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import java.awt.*;
+import javax.swing.Timer;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.awt.*;
+import java.util.Random;
 public class BricksPanel extends JPanel {
 
   private static final long serialVersionUID = 1L;
@@ -17,11 +26,11 @@ public class BricksPanel extends JPanel {
   private static final int SHAPE_S = 4;
   private static final int SHAPE_T = 5;
   private static final int SHAPE_Z = 6;
-  private static final int SHAPE_NUMBER_OF_SHAPES = 7;	
+  private static final int NUMBER_OF_SHAPES = 7;	
   private static final String SNAP_SOUND = "/snap.wav";
   private static final Brick brick;
-  Random rand = new Random();
-  BufferedImage[][] board;
+  private Random rand = new Random();
+  private BufferedImage[][] board;
   Tetris20 tetris20;
    Timer timer;
   
@@ -63,7 +72,7 @@ public class BricksPanel extends JPanel {
 		String message = "Wow U suck... Try harder";
 		int option = JOptionPane.showConfirmDialog(this, message, "Play Again?", JOptionPane.YES_NO_OPTION);
 		if(option == JOptionPane.YES_OPTION){
-			fallingBricks.restart();
+			tetris20.restart();
 		}else{
 			System.exit(0);
 		}
@@ -76,12 +85,12 @@ public class BricksPanel extends JPanel {
   }
   
    private void removeFilledRows() {
-	 int count = 0
+	 int count = 0;
    	 for (int row = ROWS; row >= 0; row--) { 
       		boolean filled = true;
       		while (filled) {
          		for (int col = 0; col <= COLS; col++) {
-            			if(board[row][col] = null) {
+            			if(board[row][col] == null) {
                 			filled = false;
             			}
         		 }
@@ -125,29 +134,29 @@ public class BricksPanel extends JPanel {
     }
   }
    private void initGUI(){
-    setFocusable();
+    setFocusable(true);
     addKeyListener(new KeyAdapter(){
-	public void KeyPressed(KeyEvent e){
-	   int code = e.getKeyCode();
-	   switch(code) {
-           	case KeyEvent.VK_LEFT:
-	      		moveLeft();
-              		break;
-	      	case KeyEvent.VK_RIGHT:
-	      		moveRight();
-	      		break;
-	      	case KeyEvent.VK_Z:
-	      		rotateLeft();
-	        	break;
-	        case KeyEvent.VK_X:
-	        	rotateRight();
-	      		break;
-         	case KeyEvent.VK_SPACE:
-           		drop();
-           		break;     
-	   }
-	}
-     }); //weird shit just leave it alone
+	       public void KeyPressed(KeyEvent e){
+		   int code = e.getKeyCode();
+			   switch(code) {
+		           	case KeyEvent.VK_LEFT:
+			      		moveLeft();
+		              		break;
+			      	case KeyEvent.VK_RIGHT:
+			      		moveRight();
+			      		break;
+			      	case KeyEvent.VK_Z:
+			      		rotateLeft();
+			        	break;
+			        case KeyEvent.VK_X:
+			        	rotateRight();
+			      		break;
+		         	case KeyEvent.VK_SPACE:
+		           		drop();
+		           		break;     
+			   }
+	       }
+      }); //weird shit just leave it alone
 	   timer = new Timer(40, new ActionListener() {
 		   public void actionPerformed(ActionEvent e){
 			   timedAction();
@@ -212,11 +221,11 @@ public class BricksPanel extends JPanel {
     boolean legal = true;
     int row = brick.getRow();
     int col = brick.getColumn();
-    int brickRows = brick.getNumberofRows();
+    int brickRows = brick.getNumberOfRows();
     int brickColumns = brick.getNumberOfColumns();
     
     //check if beyond left or right edge of panel
-    if(col < 0 || brickCols + col > COLS){
+    if(col < 0 || brickColumns + col > COLS){
       legal = false;
     }
     //checks if in top or bottom edge of panel
@@ -225,7 +234,7 @@ public class BricksPanel extends JPanel {
     }
 	else{
 		for(int r = 0; r < brickRows; r++){
-			for(int c = 0; c < brickCols; c++){
+			for(int c = 0; c < brickColumns; c++){
 				if(brick.hasTileAt(r, c) && board[row + r][col + c] != null){
 					legal = false;
 				}
@@ -239,17 +248,20 @@ public class BricksPanel extends JPanel {
 	   int brickRow = brick.getRow();
 	   int brickCol = brick.getColumn();
 	   int brickRows = brick.getNumberOfRows();
-	   int brickCols = brick.getNumberofColumns();
+	   int brickCols = brick.getNumberOfColumns();
+	   int row;
+	   int col;
 	   for(int r = 0; r < brickRows; r++){
 	      for(int c = 0; c < brickCols; c++){
-		 if(brick.hasTileAt(r, c){
-		    int row += r + brickRow;
-		    int col += c + brickCol;
+		 if(brick.hasTileAt(r, c)){
+		    row += r + brickRow;
+		    col += c + brickCol;
 		    board[row][col] = brick.getTileImage();
 		  } 
 	       }
 	    } 
-	   FileIO.playClip(SNAP_SOUND);
+	   FileIO.playClip(this, SNAP_SOUND);
+	   removeFilledRows();
 	   pickABrick();
  }
  
@@ -257,7 +269,7 @@ public class BricksPanel extends JPanel {
 	 brick.fall(2);
 	 
 	 //if cant fall further, set into place!
-	 if(!isLegal){
+	 if(!isLegal()){
 		 brick.fall(-2);
 		 drop();
 	 }
