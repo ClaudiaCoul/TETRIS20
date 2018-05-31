@@ -2,13 +2,14 @@ package annette.godtland.mytimer;
 
 import javax.swing.JPanel;
 
-public class TimerPanel extends JPanel {
+public class TimerPanel extends JPanel implements Runnable {
   private static final long serialVersionUID = 1L;
   
   private int width = 150;
   private int height = 24;
   private String timeString = "00:00:00";
   private long time = 10;
+  private Thread timerThread;
   
   public TimerPanel(long time, Font font) {
     setTime(time);
@@ -38,8 +39,12 @@ public class TimerPanel extends JPanel {
     timeString = String.format("%02d:%02d:%02d", h, m, s);
     repaint();
   }
-  
   public void start() {
+    timerThread = new Thread(this);
+    timerThread.start();
+  }
+  
+  public void run() {
     while (time > 0) {
       time -= 1;
       setTime(time);
