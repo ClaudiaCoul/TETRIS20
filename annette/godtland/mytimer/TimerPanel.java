@@ -16,6 +16,7 @@ public class TimerPanel extends JPanel {
     height = font.getSize();
     FontMetrics fm = getFontMetrics(font);
     width = fm.stringWidth(timeString);
+    start();
   }
   
   public void paintComponent (Graphics g) {
@@ -36,4 +37,25 @@ public class TimerPanel extends JPanel {
     long s = time % 60;
     timeString = String.format("%02d:%02d:%02d", h, m, s);
     repaint();
+  }
+  
+  public void start() {
+    while (time > 0) {
+      time -= 1;
+      setTime(time);
+      System.out.println(time);
+      try {
+        Thread.sleep(1000);
+      }
+      catch (InterruptedException e) {
+        return;
+      }
+    }
+    timesUp();
+  }
+  
+  protected void timesUp() {
+    String message = "Time's Up!";
+    JOptionPane.showMessageDialog(this, message);
+  }
 }
