@@ -32,6 +32,9 @@ public class MyTimer extends JFrame {
     setVisable(true);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
+  private void start() {
+    timerPanel.start();
+  }
   
   public void initGUI() {
     TitleLabel titleLabel = new TitleLabel("My Timer");
@@ -41,5 +44,16 @@ public class MyTimer extends JFrame {
     add(centerPanel, BorderLayout.CENTER);
     
     centerPanel.add(timerPanel);
+    JPanel buttonPanel = new JPanel();
+    add(buttonPanel, BorderLayout.PAGE_END);
+    
+    JButton startButton = new JButton("Start");
+    startButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        start();
+      }
+    });
+    buttonPanel.add(startButton);
   }
+  
 }
