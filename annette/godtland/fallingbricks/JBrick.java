@@ -40,7 +40,7 @@ public class JBrick extends Brick {
   
   public void rotateRight() {
     state += 1;
-    if (sate >= TILES.length) {
+    if (state >= TILES.length) {
       state = 0;
     }
   }
