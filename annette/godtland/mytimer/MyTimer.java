@@ -6,7 +6,7 @@ public class MyTimer extends JFrame {
   private static final long serialVersionUID = 1L;
   
   private Font font = new Font(Font.DIALOG, Font.BOLD, 36);
-  private TimerPanel timerPanel = new TimerPanel(10, font);
+  private TimerPanel timerPanel = new TimerPanel(0, font);
   
   public static void main(String[] args) {
     try {
@@ -50,6 +50,22 @@ public class MyTimer extends JFrame {
     centerPanel.add(timerPanel);
     JPanel buttonPanel = new JPanel();
     add(buttonPanel, BorderLayout.PAGE_END);
+    
+    JButton hoursButton = new JButton("Hour");
+    hoursButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        addAnHour();
+      }
+    });
+    buttonPanel.add(hoursButton);
+    
+    JButton minutesButton = new JButton("Min");
+    minutesButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        addAMinute();
+      }
+    });
+    buttonPanel.add(minutesButton);
     
     JButton startButton = new JButton("Start");
     startButton.addActionListener(new ActionListener() {
