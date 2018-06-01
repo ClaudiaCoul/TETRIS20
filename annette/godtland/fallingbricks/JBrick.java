@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public class JBrick extends Brick {
  
- private static final string BRICK_FILE "/cyanBrick.jpg";
+ private static final string BRICK_FILE = "/cyanBrick.jpg";
   private static final boolean[][][] TILES = {{{true, true, true},
                                                {false, false, true}},
                                               
@@ -22,6 +22,7 @@ public class JBrick extends Brick {
                                                {true, false},
                                                {true, false}}};
   private static BufferedImage image;
+  private int state = 0;
 
   public JBrick(int row, int col) {
     super(row, col);
@@ -65,5 +66,13 @@ public class JBrick extends Brick {
   
   public BufferedImage getTileImage(){
     return image;
+  }
+ 
+ public int getNumberOfRows(){
+    return TILES[state].length;
+  }
+  
+  public int getNumberOfColumns(){
+    return TILES[state][0].length;
   }
 }
