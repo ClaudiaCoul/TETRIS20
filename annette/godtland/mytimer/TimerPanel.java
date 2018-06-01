@@ -40,15 +40,20 @@ public class TimerPanel extends JPanel implements Runnable {
     repaint();
   }
   public void start() {
+    stop();
     timerThread = new Thread(this);
     timerThread.start();
+  }
+  public void stop() {
+    if (timerThread != null) {
+      timerThread.interrupt();
+      timerThread = null;
   }
   
   public void run() {
     while (time > 0) {
       time -= 1;
       setTime(time);
-      System.out.println(time);
       try {
         Thread.sleep(1000);
       }
@@ -58,7 +63,10 @@ public class TimerPanel extends JPanel implements Runnable {
     }
     timesUp();
   }
-  
+  public long getTime() {
+    return time;
+  }
+    
   protected void timesUp() {
     String message = "Time's Up!";
     JOptionPane.showMessageDialog(this, message);
