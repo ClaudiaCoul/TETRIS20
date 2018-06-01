@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 public class IBrick extends Brick {
   
-  private static final string BRICK_FILE = "/blueBrick.jpg";
+  private static final String BRICK_FILE = "/blueBrick.jpg";
   private static final boolean[][][]TILES = {{{true, true, true},
                                              {false, false, false}},
                                              
@@ -30,10 +30,10 @@ public class IBrick extends Brick {
       state = TILES.length - 1;
     }
     if (state == 1) {
-      brick.moveRight();
+      super.moveRight();
     }
     else {
-      brick.moveLeft();
+      super.moveLeft();
     }
   }
   
@@ -43,10 +43,10 @@ public class IBrick extends Brick {
       state = 0;
     }
     if (state == 1) {
-      brick.moveRight();
+      super.moveRight();
     }
     else {
-      brick.moveLeft();
+      super.moveLeft();
     }
   }
   
