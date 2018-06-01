@@ -36,6 +36,10 @@ public class MyTimer extends JFrame {
     timerPanel.start();
   }
   
+  private void stop() {
+    timePanel.stop();
+  }
+  
   public void initGUI() {
     TitleLabel titleLabel = new TitleLabel("My Timer");
     add.(titleLabel, BorderLayout, PAGE_START);
@@ -54,6 +58,14 @@ public class MyTimer extends JFrame {
       }
     });
     buttonPanel.add(startButton);
+    
+    JButton stopButton = new JButton("Stop");
+    stopButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        stop();
+      }
+    });
+    buttonPanel.add(stopButton);
   }
   
 }
