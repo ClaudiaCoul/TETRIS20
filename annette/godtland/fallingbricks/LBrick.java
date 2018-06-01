@@ -2,7 +2,7 @@ package annette.godtland.fallingbricks;
 
 public class LBrick extends Brick{
   
-  private static final string BRICK_FILE "/greenBrick.jpg";
+  private static final string BRICK_FILE = "/greenBrick.jpg";
   private static final boolean[][][] TILES = {{{true, true, true},
                                                {true, false, false}},
                                               
@@ -17,6 +17,7 @@ public class LBrick extends Brick{
                                                {true, false},
                                                {true, true}}};
   private static BufferedImage image;
+  private int state = 0;
 
   public LBrick(int row, int col) {
     super(row, col);
@@ -34,7 +35,7 @@ public class LBrick extends Brick{
   
   public void rotateRight() {
     state += 1;
-    if (sate >= TILES.length) {
+    if (state >= TILES.length) {
       state = 0;
     }
   }
@@ -61,4 +62,13 @@ public class LBrick extends Brick{
   public BufferedImage getTileImage(){
     return image;
   }
+  
+  public int getNumberOfRows(){
+    return TILES[state].length;
+  }
+  
+  public int getNumberOfColumns(){
+    return TILES[state][0].length;
+  }
+  
 }
