@@ -1,7 +1,7 @@
 package annette.godtland.fallingbricks;
 
 public class OBrick extends Brick{  
-  private static final string BRICK_FILE "/yellowBrick.jpg";
+  private static final string BRICK_FILE = "/yellowBrick.jpg";
   private static final boolean[][] TILES = {{true, true},
                                             {true, true}};
   private static BufferedImage image;
