@@ -1,6 +1,5 @@
 package annette.godtland.fallingbricks;
 
-import javax.sound.sampled.Clip;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +30,7 @@ public class FileIO {
 		}
 		catch ( UnsupportedAudioFileException e) {
 			String message = "File " + fileName + " is not a valid audio file type.";
-			JOptionPane.showMessageDialog(null, message);+
+			JOptionPane.showMessageDialog(null, message);
 		}
 		catch (LineUnavailableException e){
 			String message = "Resources not available to open file " + fileName + " at this time.";
