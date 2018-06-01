@@ -72,4 +72,12 @@ public class IBrick extends Brick {
   public BufferedImage getTileImage(){
     return image;
   }
+  
+  public int getNumberOfRows(){
+    return TILES[state].length;
+  }
+  
+  public int getNumberOfColumns(){
+    return TILES[state][0].length;
+  }
 }
