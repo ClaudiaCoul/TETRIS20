@@ -28,14 +28,6 @@ public abstract class Brick {
     int row = (y + TILE_SIZE - 1) / TILE_SIZE;
   }
   
-  public int getNumberOfRows(){
-    return TILES.length();
-  }
-  
-  public int getNumberOfColumns(){
-    return TILES[0].length();
-  }
-  
   public void drop1Row() {
     y += TILE_SIZE;
   }
