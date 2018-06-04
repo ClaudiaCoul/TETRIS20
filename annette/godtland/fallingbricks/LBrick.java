@@ -1,5 +1,8 @@
 package annette.godtland.fallingbricks;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 public class LBrick extends Brick{
   
   private static final String BRICK_FILE = "/greenBrick.jpg";
