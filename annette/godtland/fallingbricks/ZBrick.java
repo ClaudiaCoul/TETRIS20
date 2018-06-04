@@ -1,4 +1,8 @@
+package annette.godtland.fallingbricks;
+
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
 public class ZBrick extends Brick {
   
   private static final String BRICK_FILE = "/pinkBrick.jpg";
