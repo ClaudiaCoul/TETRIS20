@@ -1,5 +1,8 @@
 package annette.godtland.fallingbricks;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 public abstract class Brick {
   public static final int TILE_SIZE = 30;
   
