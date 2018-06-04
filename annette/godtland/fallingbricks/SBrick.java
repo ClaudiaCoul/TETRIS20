@@ -2,8 +2,9 @@
 //Created by Amanda, 05/18/18
 
 package annette.godtland.fallingbricks;
-import java.awt.image.BufferedImage;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 public class SBrick extends Brick {
   
