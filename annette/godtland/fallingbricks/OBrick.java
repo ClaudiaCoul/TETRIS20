@@ -1,5 +1,8 @@
 package annette.godtland.fallingbricks;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
 public class OBrick extends Brick{  
   private static final String BRICK_FILE = "/yellowBrick.jpg";
   private static final boolean[][] TILES = {{true, true},
