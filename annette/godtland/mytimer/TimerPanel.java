@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 public class TimerPanel extends JPanel implements Runnable {
   private static final long serialVersionUID = 1L;
+  private static final String ALARM_FILE = "/alarm.wav";
   
   private int width = 150;
   private int height = 24;
@@ -68,7 +69,27 @@ public class TimerPanel extends JPanel implements Runnable {
   }
     
   protected void timesUp() {
-    String message = "Time's Up!";
-    JOptionPane.showMessageDialog(this, message);
+    try {
+      URL url = getClass().getResource(ALARM_FILE);
+      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
+      Clip clip = AudioSystem.getClip();
+      clip.open(audioInputStream);
+      clip.start();
+      String message = "Time's Up!";
+      JOptionPane.showMessageDialog(this, message);
+      clip.stop();
+    }
+    catch (IOException e) {
+      String message = "File " + ALARM_FILE + "could not be opened.";
+      JOptionPane.showMessageDialog(this, message);
+    }
+    catch (UnsupportedAudioFileException e) {
+      String message = "File " + ALARM_FILE + " is not a valid audio file type.";
+      JOptionPane.showMessageDialog(this, message);
+    }
+    catch (LineUnavailableException e) {
+      String message = "REsources not available to open file " + ALARM_FILE + " at this time.";
+      JOptionPane.showMessageDialog(this, message);
+    }
   }
 }
