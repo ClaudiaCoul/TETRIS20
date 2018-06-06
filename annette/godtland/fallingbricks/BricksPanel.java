@@ -6,8 +6,8 @@ import javax.swing.Timer;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.*;
@@ -28,7 +28,7 @@ public class BricksPanel extends JPanel {
   private static final int SHAPE_Z = 6;
   private static final int NUMBER_OF_SHAPES = 7;	
   private static final String SNAP_SOUND = "/snap.wav";
-  private static final Brick brick;
+  private static Brick brick;
   private Random rand = new Random();
   private BufferedImage[][] board;
   Tetris20 tetris20;
@@ -249,8 +249,8 @@ public class BricksPanel extends JPanel {
 	   int brickCol = brick.getColumn();
 	   int brickRows = brick.getNumberOfRows();
 	   int brickCols = brick.getNumberOfColumns();
-	   int row;
-	   int col;
+	   int row = 0;
+	   int col = 0;
 	   for(int r = 0; r < brickRows; r++){
 	      for(int c = 0; c < brickCols; c++){
 		 if(brick.hasTileAt(r, c)){

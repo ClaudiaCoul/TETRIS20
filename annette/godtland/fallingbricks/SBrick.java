@@ -2,9 +2,9 @@
 //Created by Amanda, 05/18/18
 
 package annette.godtland.fallingbricks;
-
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
 
 public class SBrick extends Brick {
   
@@ -34,13 +34,13 @@ public class SBrick extends Brick {
   
   public void rotateRight() {
     state += 1;
-    if (sate >= TILES.length) {
+    if (state >= TILES.length) {
       state = 0;
     }
   }
   
   public boolean hasTileAt(int row, int col){
-    return TILES[row][col];
+    return TILES[state][row][col];
   }
   
   public BufferedImage getTileImage(){
@@ -48,11 +48,11 @@ public class SBrick extends Brick {
   }
   
   public int getNumberOfRows(){
-    return TILES[state].length();
+    return TILES[state].length;
   }
   
   public int getNumberOfColumns(){
-    return TILES[state][0].length();
+    return TILES[state][0].length;
   }
   public void draw(Graphics g){
     int rows = TILES[state].length;

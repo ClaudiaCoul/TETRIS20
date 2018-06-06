@@ -49,7 +49,7 @@ public class LBrick extends Brick{
     
     for (int row = 0; row <= rows; row++) {
       for (int col = 0; col <= cols; col++) {
-        if (TILES[row][col] == true) {
+        if (TILES[state][row][col] == true) {
           int tileX = x + (TILE_SIZE * col);
           int tileY = y + (TILE_SIZE * row);
           g.drawImage(image, tileX, tileY, null);
@@ -59,7 +59,7 @@ public class LBrick extends Brick{
   }//end draw method
   
   public boolean hasTileAt(int row, int col){
-    return TILES[row][col];
+    return TILES[state][row][col];
   }
   
   public BufferedImage getTileImage(){

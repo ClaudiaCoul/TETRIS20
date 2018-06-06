@@ -1,3 +1,5 @@
+package annette.godtland.fallingbricks;
+
 
 
 import javax.swing.JFrame;
