@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 public class ZBrick extends Brick {
   
-  private static final String BRICK_FILE = "/pinkBrick.jpg";
+  private static final String BRICK_FILE = "pinkBrick.jpg";
   private static final boolean[][][] TILES = {{{true, true, false},
                                             {false, true, true}},
                                             

@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class TBrick extends Brick{
   
-  private static final String BRICK_FILE = "/whiteBrick.jpg";
+  private static final String BRICK_FILE = "whiteBrick.jpg";
   private static final boolean[][][] TILES = {{{true, true, true},
                                                {false, true, false}},
                                               

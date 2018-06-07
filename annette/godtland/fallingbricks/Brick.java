@@ -28,7 +28,7 @@ public abstract class Brick {
   }
   
   public int getRow(){
-    return (y + TILE_SIZE - 1) / TILE_SIZE;
+    return (y + (TILE_SIZE - 1)) / TILE_SIZE;
   }
   
   public void drop1Row() {
