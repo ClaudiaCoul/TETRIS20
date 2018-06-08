@@ -28,8 +28,8 @@ public class OBrick extends Brick{
     int rows = TILES.length;
     int cols = TILES[0].length;
     
-    for (int row = 0; row <= rows; row++) {
-      for (int col = 0; col <= cols; col++) {
+    for (int row = 0; row < rows; row++) {
+      for (int col = 0; col < cols; col++) {
         if (TILES[row][col] == true) {
           int tileX = x + (TILE_SIZE * col);
           int tileY = y + (TILE_SIZE * row);
