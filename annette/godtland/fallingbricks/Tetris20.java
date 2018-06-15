@@ -5,6 +5,8 @@ package annette.godtland.fallingbricks;
 import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 public class Tetris20 extends JFrame {
    private static final long serialVersionUID = 1L;
    private ScorePanel scorePanel = new ScorePanel(0, Color.CYAN);
@@ -24,6 +26,8 @@ public class Tetris20 extends JFrame {
      
    }
    public Tetris20(){
+	  setFocusable(true);
+	  setFocusTraversalKeysEnabled(false);
       initGUI();
       setTitle("Tetris20");
       setResizable(false);
@@ -43,9 +47,15 @@ public class Tetris20 extends JFrame {
      add(mainPanel, BorderLayout.CENTER);
          
      //score panel
+     add(scorePanel, BorderLayout.NORTH);
      
      //bricks panel
      mainPanel.add(bricksPanel);
+     addKeyListener(new KeyAdapter(){
+	       public void keyPressed(KeyEvent e){
+		   int code = e.getKeyCode();
+	       }
+    });
   }
    
    public void addToScore(int points){

@@ -49,7 +49,6 @@ public class JBrick extends Brick {
   public void draw(Graphics g) {
     int rows = TILES.length;
     int cols = TILES[0].length;
-    
     for (int row = 0; row < rows; row++) {
       for (int col = 0; col < cols; col++) {
         if (TILES[state][row][col] == true) {

@@ -19,7 +19,7 @@ public class LBrick extends Brick{
                                               {{true, false},
                                                {true, false},
                                                {true, true}}};
-  private static BufferedImage image;
+  private static BufferedImage image = null;
   private int state = 0;
 
   public LBrick(int row, int col) {

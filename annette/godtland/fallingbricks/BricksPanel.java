@@ -15,7 +15,7 @@ import java.util.Random;
 public class BricksPanel extends JPanel {
 
   private static final long serialVersionUID = 1L;
-  private static final int ROWS = 15;
+  private static final int ROWS = 15 ;
   private static final int COLS = 10;
   private static final int WIDTH = COLS * Brick.TILE_SIZE;
   private static final int HEIGHT = ROWS * Brick.TILE_SIZE;
@@ -26,8 +26,8 @@ public class BricksPanel extends JPanel {
   private static final int SHAPE_S = 4;
   private static final int SHAPE_T = 5;
   private static final int SHAPE_Z = 6;
-  private static final int NUMBER_OF_SHAPES = 7;	
-  private static final String SNAP_SOUND = "/snap.wav";
+  private static final int NUMBER_OF_SHAPES = 6;	
+  private static final String SNAP_SOUND = "snap.wav";
   private static Brick brick;
   private Random rand = new Random();
   private BufferedImage[][] board;
@@ -51,19 +51,19 @@ public class BricksPanel extends JPanel {
     int col = (COLS / 2);
     int pick = rand.nextInt(NUMBER_OF_SHAPES);
 	    switch(pick){
-		    case 1 : brick = new IBrick(row, col);
+		    case 0 : brick = new IBrick(row, col);
 			     break;
-		    case 2 : brick = new JBrick(row, col);
+		    case 1 : brick = new JBrick(row, col);
 			     break;
-		    case 3 : brick = new LBrick(row, col);
+		    case 2 : brick = new LBrick(row, col);
 			     break;
-		    case 4 : brick = new OBrick(row, col);
+		    case 3 : brick = new OBrick(row, col);
 			     break;
-		    case 5 : brick = new SBrick(row, col);
+		    case 4 : brick = new SBrick(row, col);
 			     break;
-		    case 6 : brick = new TBrick(row, col);
+		    case 5 : brick = new TBrick(row, col);
 			     break;
-		    case 7 : brick = new ZBrick(row, col);
+		    case 6 : brick = new ZBrick(row, col);
 			     break;
 	    }
 	    if(!isLegal()){
@@ -130,13 +130,13 @@ public class BricksPanel extends JPanel {
     
     // falling bricks
     if (brick != null) {
-      brick.draw(g); //might not work!
+      brick.draw(g); 
     }
   }
    private void initGUI(){
     setFocusable(true);
     addKeyListener(new KeyAdapter(){
-	       public void KeyPressed(KeyEvent e){
+	       public void keyPressed(KeyEvent e){
 		   int code = e.getKeyCode();
 			   switch(code) {
 		           	case KeyEvent.VK_LEFT:
@@ -210,7 +210,7 @@ public class BricksPanel extends JPanel {
       brick.drop1Row();
       if (!isLegal()) {
         legal = false;
-	brick.rise1Row();
+	    brick.rise1Row();
       }
      }
      insertBrick();
@@ -251,11 +251,11 @@ public class BricksPanel extends JPanel {
 	   int brickCols = brick.getNumberOfColumns();
 	   int row = 0;
 	   int col = 0;
-	   for(int r = 0; r < brickRows; r++){
-	      for(int c = 0; c < brickCols; c++){
+	   for(int r = 1; r < brickRows; r++){
+	      for(int c = 1; c < brickCols; c++){
 		 if(brick.hasTileAt(r, c)){
-		    row += r + brickRow;
-		    col += c + brickCol;
+		    row += ( r + brickRow);
+		    col += ( c + brickCol);
 		    board[row][col] = brick.getTileImage();
 		  } 
 	       }
