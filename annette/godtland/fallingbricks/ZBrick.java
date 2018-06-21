@@ -36,8 +36,8 @@ public class ZBrick extends Brick {
   }
   
   public void draw(Graphics g) {
-    int rows = TILES.length;
-    int cols = TILES[0].length;
+    int rows = TILES[state].length;
+    int cols = TILES[state][0].length;
     
     for (int row = 0; row < rows; row++) {
       for (int col = 0; col < cols; col++) {
