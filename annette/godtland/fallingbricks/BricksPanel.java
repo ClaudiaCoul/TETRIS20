@@ -26,7 +26,7 @@ public class BricksPanel extends JPanel {
   private static final int SHAPE_S = 4;
   private static final int SHAPE_T = 5;
   private static final int SHAPE_Z = 6;
-  private static final int NUMBER_OF_SHAPES = 6;	
+  private static final int NUMBER_OF_SHAPES = 7;	
   private static final String SNAP_SOUND = "snap.wav";
   private static Brick brick;
   private Random rand = new Random();
