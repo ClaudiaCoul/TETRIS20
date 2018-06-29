@@ -30,14 +30,14 @@ public class TBrick extends Brick{
   }
   
   public void rotateLeft() {
-    state -= 1;
+    state--;
     if (state < 0) {
       state = TILES.length - 1;
     }
   }
   
   public void rotateRight() {
-    state += 1;
+    state++;
     if (state >= TILES.length) {
       state = 0;
     }
