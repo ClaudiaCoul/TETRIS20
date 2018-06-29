@@ -51,19 +51,19 @@ public class BricksPanel extends JPanel {
     int col = (COLS / 2);
     int pick = rand.nextInt(NUMBER_OF_SHAPES);
 	    switch(pick){
-		    case 0 : brick = new IBrick(row, col);
+		    case SHAPE_I : brick = new IBrick(row, col);
 			     break;
-		    case 1 : brick = new JBrick(row, col);
+		    case SHAPE_J : brick = new JBrick(row, col);
 			     break;
-		    case 2 : brick = new LBrick(row, col);
+		    case SHAPE_L : brick = new LBrick(row, col);
 			     break;
-		    case 3 : brick = new OBrick(row, col);
+		    case SHAPE_O : brick = new OBrick(row, col);
 			     break;
-		    case 4 : brick = new SBrick(row, col);
+		    case SHAPE_S : brick = new SBrick(row, col);
 			     break;
-		    case 5 : brick = new TBrick(row, col);
+		    case SHAPE_T : brick = new TBrick(row, col);
 			     break;
-		    case 6 : brick = new ZBrick(row, col);
+		    case SHAPE_Z : brick = new ZBrick(row, col);
 			     break;
 	    }
 	    if(!isLegal()){
@@ -86,27 +86,26 @@ public class BricksPanel extends JPanel {
   
    private void removeFilledRows() {
 	 int count = 0;
-   	 for (int row = ROWS; row >= 0; row--) { 
+   	 for (int row = ROWS - 1; row >= 0; row--) { 
       		boolean filled = true;
-      		while (filled) {
-         		for (int col = 0; col <= COLS; col++) {
-            			if(board[row][col] == null) {
-                			filled = false;
-            			}
-        		 }
-         		 if (filled) {
-            		 	for (int r = row; r <= ROWS; r++) {
-               		 		for (int c = 0; c <= COLS; c++) {
-                  				board[r][c] = board[r-1][c];
-               				}
-            		 	 }
+      		for (int col = 0; col < COLS && filled; col++){
+            		if(board[row][col] == null) {
+                		filled = false;
+            		}
+        	}
+         	if (filled) {
+            		for (int r = row; r <= ROWS; r++) {
+               			for (int c = 0; c <= COLS; c++) {
+                  			board[r][c] = board[r-1][c];
+               			}
+            		}
             		 	 row++;
 				 count++;
-         		}
-     		}
+         	}
  	 }
 	 calculateScore(count);
    }
+	
   private void calculateScore(int count){
 	  switch(count){
 		  case 1: tetris20.addToScore(1);
