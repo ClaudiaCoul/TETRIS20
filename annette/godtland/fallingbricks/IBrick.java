@@ -31,10 +31,10 @@ public class IBrick extends Brick {
       state = TILES.length - 1;
     }
     if (state == 1) {
-      super.moveRight();
+      moveRight();
     }
     else {
-      super.moveLeft();
+      moveLeft();
     }
   }
   
@@ -44,10 +44,10 @@ public class IBrick extends Brick {
       state = 0;
     }
     if (state == 1) {
-      super.moveRight();
+      moveRight();
     }
     else {
-      super.moveLeft();
+      moveLeft();
     }
   }
   
